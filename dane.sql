@@ -302,3 +302,9 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Rafał', N'Berenc', '91100361483', '340832256', '2017/3/7 12:00:00', 10, 1, 5);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Maciej', N'Dąbrowski', '82120577851', '707357917', '2018/8/9 12:00:00', 10, 1, 5);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Karol', N'Głowacki', '79032931437', '901995210', '2019/6/1 12:00:00', 10, 1, 5);
+
+--barmani
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Joanna', N'Wiejska', '77737560686', '101116973', '2016/6/6 12:00:00', 9, 1, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Maciej', N'Smalec', '18839922561', '534951037', '2018/2/22 12:00:00', 9, 5, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Krystyna', N'Bigos', '63254011399', '653597647', '2019/3/8 12:00:00', 9, 11, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Rafał', N'Kapusta', '67917714089', '400191681', '2019/10/1 12:00:00', 9, 7, 6);
