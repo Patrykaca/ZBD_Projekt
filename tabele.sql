@@ -1,5 +1,5 @@
---create database projekt
---go
+create database projekt
+go
 
 use projekt
 go
