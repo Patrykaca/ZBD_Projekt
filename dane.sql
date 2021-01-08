@@ -204,6 +204,15 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Rafał', N'Kowal', '50091643291', '718107311', '2020/1/26 12:00:00', 3, 12, 7);
 go
 
+--pomocnicy kucharza
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Oskar', N'Krupa', '54100449654', '703705355', '2019/3/27 12:00:00', 5, 1, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Ignacy', N'Makowski', '64090251728', '482486211', '2019/7/21 12:00:00', 5, 3, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Marian', N'Włodarczyk', '76020234455', '963420007', '2019/9/28 12:00:00', 5, 4, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kamil', N'Sawicki', '56031951572', '959230765', '2020/1/12 12:00:00', 5, 6, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kewin', N'Ostrowski', '02240337926', '702051673', '2020/2/1 12:00:00', 5, 7, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Heronim', N'Zakrzewski', '76051561683', '035478478', '2020/2/8 12:00:00', 5, 9, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Remigiusz', N'Laskowski', '83123058572', '687600687', '2020/2/12 12:00:00', 5, 11, 7);
+
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 19:43:10', N'ul. Bobrowa', 1, 1, 1, N'Oczekujące' );
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:01:00', N'ul. Miętowa', 2, 2, 1, 'W toku');
