@@ -264,8 +264,27 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Sebastian', N'Krótki', '22067528040', '542393163', '2020/12/01 12:00:00', 7, 12, 6);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Krystian', N'Cichy', '30965101409', '045404930', '2020/12/01 12:00:00', 7, 8, 6);
 
+--marketingowcy
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Korneliusz', N'Waha', '95111482997', '242547615', '2019/1/6 12:00:00', 12, 1, 1);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Antonii', N'Kuta', '61031458912', '952490247', '2019/1/8 12:00:00', 12, 1, 1);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Artur', N'Głośny', '91081349465', '749510679', '2019/1/12 12:00:00', 12, 1, 1);
 
--- manager
+--księgowi
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Dorota', N'Kowalska', '93012225938', '987849422', '2019/1/1 12:00:00', 11, 1, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Anatolia', N'Wasilewska', '70033181944', '404666860', '2019/1/3 12:00:00', 11, 2, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Matylda', N'Chmielewska', '02281725991', '660381675', '2019/1/4 12:00:00', 11, 3, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Jadwiga', N'Lewandowska', '72011931451', '750535488', '2019/1/4 12:00:00', 11, 4, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Izabela', N'Wysocka', '95061013229', '527093670', '2019/1/5 12:00:00', 11, 5, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Luiza', N'Pietrzak', '48032128462', '164202360', '2019/1/5 12:00:00', 11, 6, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Marysia', N'Szymańska', '89042811519', '884938486', '2019/1/6 12:00:00', 11, 7, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Izyda', N'Zawadzka', '95060876852', '415215683', '2019/1/7 12:00:00', 11, 8, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Beata', N'Zielińska', '91122483464', '643063300', '2019/1/8 12:00:00', 11, 9, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Eleonora', N'Włodarczyk', '91090372483', '992485233', '2019/1/9 12:00:00', 11, 10, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Paulina', N'Sokołowska', '70111251778', '780302861', '2019/1/11 12:00:00', 11, 11, 4);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Danuta', N'Krajewska', '54121273265', '376672903', '2019/1/15 12:00:00', 11, 12, 4);
+
+
+--manager
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Ola', N'Gandor', '60798652972', '293285830', '2015/1/1 12:00:00', 8, 1, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Agnieszka', N'Niedzielski', '52459634190', '472069779', '2019/4/15 12:00:00', 8, 2, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Skyler', N'Wczorajszy', '51343113372', '242112765', '2019/7/14 12:00:00', 8, 3, 3);
