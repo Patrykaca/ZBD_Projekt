@@ -202,3 +202,10 @@ go
 alter table zamowienie_posilek alter column
      zamowienie_id int not null
 go
+
+alter table zamowienie add status_zamowienia varchar(32) default N'Oczekujące' ;
+alter table zamowienie alter column status_zamowienia varchar(32) not null;
+alter table zamowienie add constraint status_check CHECK (status_zamowienia in (N'Oczekujące', 'W toku', 'Wykonane'));
+go
+
+
