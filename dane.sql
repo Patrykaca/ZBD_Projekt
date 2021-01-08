@@ -108,8 +108,7 @@ insert into klient (imie, nazwisko, pesel, telefon) values ('Agnieszka', 'Majone
 insert into klient (imie, nazwisko, pesel, telefon) values (N'Sławomir', 'Musztarda', '99120901233', '456234678');
 go
 
---dostawcy
-<<<<<<< HEAD
+--kelner
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kasia', 'Grochowska', '08184050671', '526042964', '2015/12/25 12:00:00', 2, 1, 6);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Frania', 'Dymek', '08033408804', '607621014', '2017/11/22 12:00:00', 2, 1, 6);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Basia', 'Kochana', '28406049405', '126906084', '2019/12/1 12:00:00', 2, 2, 6);
@@ -138,7 +137,7 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Konrad', N'Podkomórka', '68239356600', '803558228', '2016/8/4 12:00:00', 2, 9, 6);
 go
 
-=======
+--dostawcy
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kasia', 'Grochowska', '08184050671', '526042964', '2015/12/13 12:00:00', 1, 1, 1);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Frania', 'Dymek', '08033408804', '607621014', '2015/12/13 12:00:00', 1, 1, 1);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Basia', 'Kochana', '28406049405', '126906084', '2015/12/13 12:00:00', 1, 2, 1);
@@ -165,9 +164,9 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Eustachy', 'Router', '58354305409', '926888578', '2015/12/13 12:00:00', 1, 1, 1);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Filip', N'Podkładka', '57191486952', '104143323', '2015/12/13 12:00:00', 1, 2, 1);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Konrad', N'Podkomórka', '68239356600', '803558228', '2015/12/13 12:00:00', 1, 9, 1);
+go
 
 --starzy
->>>>>>> bcfd45c71340e3cfd161c004d01eac0440559157
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values ('Jan','Nowak','12345678912','123456789','2020/01/10 12:30:23', 1, 1, 2);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Natalia', 'Szadkowska', '75010734889', '126648111', '2020/12/01 12:00:00', 2, 2, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Artur', N'Kądecki', '70042078417', '306451785', '2020/12/02 12:00:00', 2, 2, 4);
@@ -193,6 +192,7 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Krzystof', N'Stary', '17060818207', '237874434', '2020/11/23 12:00:00', 6, 10, 7);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Agnieszka', N'Humus', '45908405729', '375831855', '2020/10/30 12:00:00', 6, 11, 7);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Cezary', N'Mizeria', '67019845467', '923043115', '2020/11/9 12:00:00', 6, 12, 7);
+go
 
 --szefowie kuchnii
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Mirosław', N'Dżmalski', '69112672653', '624172547', '2020/12/01 12:00:00', 4, 1, 7);
@@ -208,6 +208,31 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Agata', N'Durna', '90052563949', '977769139', '2020/12/01 12:00:00', 4, 11, 7);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 4, 12, 7);
 go
+
+--kucharze
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 1, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 1, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 2, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 3, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 3, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 4, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 5, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 5, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 6, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 6, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 7, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 7, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 8, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 8, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 9, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 9, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 10, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 11, 7);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Honorata', N'Mądra', '76012818667', '401591698', '2020/12/01 12:00:00', 3, 12, 7);
+go
+
+
+
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 19:43:10', N'ul. Bobrowa', 1, 1, 1, N'Oczekujące' );
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:01:00', N'ul. Miętowa', 2, 2, 1, 'W toku');
