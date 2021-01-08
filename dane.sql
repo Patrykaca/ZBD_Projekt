@@ -204,8 +204,6 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 go
 
 
-
-
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 19:43:10', N'ul. Bobrowa', 1, 1, 1, N'Oczekujące' );
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:01:00', N'ul. Miętowa', 2, 2, 1, 'W toku');
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 19:43:10', N'ul. Habrowa', 3, 3, 2, 'Wykonane');
@@ -236,3 +234,22 @@ insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) valu
 insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 11);
 insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 8, 12);
 go
+
+--recepcjoniści
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Hania', N'Bania', '05483201473', '309182003', '2020/12/01 12:00:00', 7, 1, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Jasio', N'Rowerek', '88224298436', '901172387', '2020/12/01 12:00:00', 7, 2, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Mieszko', N'Pierwszy', '52590103692', '947898203', '2020/12/01 12:00:00', 7, 3, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Anna', N'Miła', '07399738132', '853914744', '2020/12/01 12:00:00', 7, 4, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kazimierz', N'Wielki', '06387369817', '095741658', '2020/12/01 12:00:00', 7, 5, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Julian', N'Hanas', '79839456077', '912171574', '2020/12/01 12:00:00', 7, 6, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Mirosław', N'Lichy', '73134084483', '858702528', '2020/12/01 12:00:00', 7, 7, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Aleksandra', N'Niska', '49222613969', '205984201', '2020/12/01 12:00:00', 7, 8, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Ewelina', N'Mroczna', '47228602186', '841701501', '2020/12/01 12:00:00', 7, 9, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Sylwia', N'Wysoka', '26096607949', '858557351', '2020/12/01 12:00:00', 7, 10, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Wiktoria', N'Chuda', '80645034500', '057202523', '2020/12/01 12:00:00', 7, 11, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Wiola', N'Czysta', '70085707026', '874629936', '2020/12/01 12:00:00', 7, 12, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Wioletta', N'Ruda', '43088270552', '938754425', '2020/12/01 12:00:00', 7, 1, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Magda', N'Żubr', '99299845638', '980464626', '2020/12/01 12:00:00', 7, 2, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Mateusz', N'Lubiany', '22831363269', '997180496', '2020/12/01 12:00:00', 7, 6, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Sebastian', N'Krótki', '22067528040', '542393163', '2020/12/01 12:00:00', 7, 12, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Krystian', N'Cichy', '30965101409', '045404930', '2020/12/01 12:00:00', 7, 8, 6);
