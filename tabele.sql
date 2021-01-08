@@ -184,9 +184,21 @@ select dbo.check_pesel('12345678901')
 go
 
 alter table pracownik
-    add constraint check_pesel_pracownika CHECK (dbo.check_pesel (pesel) = 1)
+    add constraint check_pesel_pracownika CHECK (dbo.check_pesel(pesel) = 1)
 go
 
 alter table klient
-    add constraint check_pesel_klienta CHECK (dbo.check_pesel (pesel) = 1)
+    add constraint check_pesel_klienta CHECK (dbo.check_pesel(pesel) = 1)
+go
+
+alter table zamowienie_posilek
+    add zamowienie_id int
+go
+
+alter table zamowienie_posilek
+    add constraint zamowienie_fk foreign key (zamowienie_id) references zamowienie (zamowienie_id)
+go
+
+alter table zamowienie_posilek alter column
+     zamowienie_id int not null
 go
