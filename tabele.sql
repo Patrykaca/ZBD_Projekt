@@ -211,7 +211,7 @@ alter table zamowienie
     alter column status_zamowienia varchar(32) not null;
 go
 alter table zamowienie
-    add constraint status_check CHECK (status_zamowienia in (N'Oczekujące', 'W toku', 'Wykonane'));
+    add constraint status_check CHECK (status_zamowienia in (N'Oczekujące', 'W toku', 'Wykonane', 'Anulowane'));
 go
 
 
