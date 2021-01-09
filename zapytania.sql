@@ -31,3 +31,8 @@ where l.lokal_id = p.lokal_id
   and p.stanowisko_id = s.stanowisko_id
 group by l.lokal_id
 
+-- 2 --
+
+select p.pracownik_id, p.stanowisko_id, p.lokal_id
+from pracownik p
+where p.stanowisko_id = 3 or p.stanowisko_id = 4 or p.stanowisko_id = 5

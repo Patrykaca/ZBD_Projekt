@@ -137,6 +137,9 @@ go
 select dbo.check_telefon('123456789')
 go
 
+use projekt
+go
+
 alter table pracownik
     add constraint check_telefon_pracownika CHECK (dbo.check_telefon(telefon) = 1)
 go
@@ -181,6 +184,9 @@ end
 go
 
 select dbo.check_pesel('12345678901')
+go
+
+use projekt
 go
 
 alter table pracownik
