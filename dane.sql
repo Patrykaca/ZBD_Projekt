@@ -279,6 +279,43 @@ insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_z
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/02 12:00:00', N'ul. Czarna ', 9, 11, 102, N'Oczekujące' )
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/03 12:00:00', N'ul. Czarna ', 9, 11, 103, 'Wykonane' )
 
+insert into klient (imie, nazwisko, pesel, telefon) values (N'Rafał', 'Konieczny', '85030114321', '938293865');
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 12:00:00', N'ul. Granatowa ', 10, 12, 85, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/06 12:00:00', N'ul. Granatowa ', 10, 12, 104, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 12:00:00', N'ul. Granatowa ', 10, 12, 104, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/12 12:00:00', N'ul. Granatowa ', 10, 12, 85, 'Anulowane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/16 12:00:00', N'ul. Granatowa ', 10, 12, 85, N'Oczekujące')
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/18 12:00:00', N'ul. Granatowa ', 10, 12, 104, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/20 12:00:00', N'ul. Granatowa ', 10, 12, 85, N'Oczekujące')
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/23 12:00:00', N'ul. Granatowa ', 10, 12, 104, 'Wykonane' )
+
+insert into klient (imie, nazwisko, pesel, telefon) values (N'Agata', 'Pokemon', '86031214321', '669172551');
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 12:00:00', N'ul. Szara ', 11, 13, 113, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/06 12:00:00', N'ul. Szara ', 11, 13, 86, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/12 12:00:00', N'ul. Szara ', 11, 13, 105, 'Anulowane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/18 12:00:00', N'ul. Szara ', 11, 13, 113, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/17 12:00:00', N'ul. Szara ', 11, 13, 105, 'Anulowane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/16 12:00:00', N'ul. Szara ', 11, 13, 86, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/15 12:00:00', N'ul. Szara ', 11, 13, 86, 'W toku' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/14 12:00:00', N'ul. Szara ', 11, 13, 86, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/18 12:00:00', N'ul. Szara ', 11, 13, 105, N'Oczekujące' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/16 12:00:00', N'ul. Szara ', 11, 13, 113, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/27 12:00:00', N'ul. Szara ', 11, 13, 105, N'Oczekujące' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/26 12:00:00', N'ul. Szara ', 11, 13, 105, 'W toku' )
+
+insert into klient (imie, nazwisko, pesel, telefon) values (N'Kinga', 'Patus', '81121214321', '172394854');
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 12:00:00', N'ul. Beżowa ', 12, 14, 106, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/03 12:00:00', N'ul. Beżowa ', 12, 14, 106, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/06 12:00:00', N'ul. Beżowa ', 12, 14, 106, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 12:00:00', N'ul. Beżowa ', 12, 14, 106, 'Anulowane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Beżowa ', 12, 14, 106, N'Oczekujące' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/12 12:00:00', N'ul. Beżowa ', 12, 14, 87, N'Oczekujące' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/17 12:00:00', N'ul. Beżowa ', 12, 14, 87, 'Wykonane' )
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/21 12:00:00', N'ul. Beżowa ', 12, 14, 87, 'Anulowane' )
+
 go
 
 --kelner
