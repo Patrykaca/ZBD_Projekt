@@ -214,4 +214,11 @@ alter table zamowienie
     add constraint status_check CHECK (status_zamowienia in (N'Oczekujące', 'W toku', 'Wykonane', 'Anulowane'));
 go
 
+alter table pracownik
+    add premia int;
+go
+
+update pracownik set premia = datediff(mm, pracownik.data_zatrudnienia, getdate()) * 10
+where datediff(dd, pracownik.data_zatrudnienia, getdate()) > 1200
+go
 
