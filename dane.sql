@@ -65,6 +65,11 @@ insert into posilek (nazwa, cena) values (N'Sałatka grecka', 16);
 insert into posilek (nazwa, cena) values (N'Sałatka z łososiem', 18);
 insert into posilek (nazwa, cena) values (N'Sałatka gyros', 17);
 insert into posilek (nazwa, cena) values (N'Sałatka z tuńczykiem', 15);
+insert into posilek (nazwa, cena) values (N'Kebab tortilla', 13);
+insert into posilek (nazwa, cena) values (N'Kebab falafel', 14);
+insert into posilek (nazwa, cena) values (N'Mega rollo samo mięso', 20);
+insert into posilek (nazwa, cena) values (N'Kebab z surówkami', 10);
+insert into posilek (nazwa, cena) values (N'Szklanka wody', 1);
 go
 
 insert into stanowisko (nazwa_stanowiska, placa) values ('dostawca', 2500);
@@ -163,7 +168,7 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Miłosz', N'Gośnierz', '46121071646', '377905756', '2020/12/08 12:00:00', 8, 5, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Natalia', N'Głowacka', '88041883653', '761983697', '2020/11/11 12:00:00', 9, 6, 4);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Kinga', N'Mała', '59050397862', '985631740', '2020/3/17 12:00:00', 10, 6, 5);
-insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Aleksandra', 'Ogromniasta', '983164758', '501349770', '2020/12/11 12:00:00', 11, 7, 6);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Aleksandra', 'Ogromniasta', '98112475842', '501349770', '2020/12/11 12:00:00', 11, 7, 6);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Patryk', 'Jaki', '81073097175', '517234965', '2020/12/12 12:00:00', 12, 7, 7);
 
 --wozni
@@ -276,7 +281,7 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Jhon', N'Dziwny', '60473022138', '764834287', '2018/11/09 12:00:00', 8, 7, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Harry', N'Szukający', '96962612968', '270265553', '2018/9/11 12:00:00', 8, 8, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Janusz', N'Typowy', '22701158485', '183962807', '2020/6/2 12:00:00', 8, 9, 3);
-insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Brandi', N'Szara', '79562735746', '419029814', '2017/21/2 12:00:00', 8, 10, 3);
+insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Brandi', N'Szara', '79562735746', '419029814', '2017/1/2 12:00:00', 8, 10, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Lana', N'Hałaśliwa', '53045188797', '517363336', '2016/6/9 12:00:00', 8, 11, 3);
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Riley', N'Nagrana', '95888371324', '597303565', '2020/9/6 12:00:00', 8, 12, 3);
 
@@ -292,6 +297,8 @@ insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanow
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id) values (N'Rafał', N'Kapusta', '67917714089', '400191681', '2019/10/1 12:00:00', 9, 7, 6);
 
 --stare zamówienia
+
+/*
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 19:43:10', N'ul. Bobrowa', 1, 1, 1, N'Oczekujące' );
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:01:00', N'ul. Miętowa', 2, 2, 1, 'W toku');
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 19:43:10', N'ul. Habrowa', 3, 3, 2, 'Wykonane');
@@ -303,24 +310,24 @@ insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_z
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/03 19:43:10', N'ul. Długa', 9, 9, 5, 'Wykonane');
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:04:00', N'ul. Krótka', 10, 10, 5, 'W toku');
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/04 19:43:10', N'ul. Szara', 11, 11, 6, 'Wykonane');
-insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:05:00', N'ul. Jana Pawła II', 12, 11, 6, 'W toku');
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 18:05:00', N'ul. Jana Pawła II', 11, 1, 6, 'W toku');
 go
+*/
 
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 1, 1);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 11, 2);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 19, 3);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 21, 4);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 3, 5);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 5, 6);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 6);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 2, 7);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 1, 7);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 8, 8);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 7, 9);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (4, 5, 10);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 4, 10);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 11);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 8, 12);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 1, 1);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 11, 2);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 19, 3);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 21, 4);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 3, 5);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 5, 6);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 6);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 2, 7);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 1, 7);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 8, 8);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 7, 9);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (4, 5, 10);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 4, 10);
+--insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 11);
 go
 
 
@@ -328,36 +335,71 @@ go
 insert into klient (imie, nazwisko, pesel, telefon) values ('Artur', 'Domarecki', '16394683231', '997123123');
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/01 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 1, 13);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 13, 1);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/02 12:00:00', N'ul. Gawronowa ', 1, 1, 76, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 2, 14);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 14, 2);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/03 12:00:00', N'ul. Gawronowa ', 1, 1, 88, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 11, 15);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 15, 3);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/04 12:00:00', N'ul. Gawronowa ', 1, 1, 89, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 11, 16);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 15, 16);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 16, 16);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 16, 4);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 16, 4);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 16, 4);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/05 12:00:00', N'ul. Gawronowa ', 1, 1, 76, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 12, 17);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 12, 5);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/06 12:00:00', N'ul. Gawronowa ', 1, 1, 89, 'Anulowane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 5, 18);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 7, 18);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 5, 6);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 7, 6);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/07 12:00:00', N'ul. Gawronowa ', 1, 1, 76, 'Wykonane' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 1, 19);
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 2, 19);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (2, 1, 7);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (3, 2, 7);
 
 insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/08 12:00:00', N'ul. Gawronowa ', 1, 1, 89, N'Oczekujące' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 16, 20);
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 16, 8);
 
-insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'W toku' )
-insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 21);
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 9);
 
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 10);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 11);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 7, 12);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 3, 13);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 6, 14);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 9, 15);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 16);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 4, 17);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 1, 18);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 19);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 5, 20);
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia) values ('2021/01/09 12:00:00', N'ul. Gawronowa ', 1, 1, 107, 'Anulowane' )
+insert into zamowienie_posilek (liczba_posilkow, posilek_id, zamowienie_id) values (1, 2, 21);
 
 
 insert into klient (imie, nazwisko, pesel, telefon) values ('Monika', 'Nowak', '78543962835', '517934065');

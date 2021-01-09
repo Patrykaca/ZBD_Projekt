@@ -134,9 +134,6 @@ begin
 end
 go
 
-select dbo.check_telefon('123456789')
-go
-
 use projekt
 go
 
@@ -148,9 +145,6 @@ alter table klient
     add constraint check_telefon_klienta CHECK (dbo.check_telefon(telefon) = 1)
 go
 
-insert into klient (imie, nazwisko, pesel, telefon)
-values ('jan', 'nowak', '12345678901', '123456789')
-go
 
 if exists(select 1
           from sys.objects
@@ -181,9 +175,6 @@ begin
         end
     return 0
 end
-go
-
-select dbo.check_pesel('12345678901')
 go
 
 use projekt
