@@ -1,6 +1,6 @@
 use projekt
 
--- 1 --
+-- 1 -- wypisuje średnie zarboki pracownikow lokalu oraz czy zarabiają więcej niż średnia dla wsztstkich lokali
 
 select l.lokal_id                                                           as lokal,
        cast(round(avg(s.placa + isnull(p.premia, 0)), 2) as numeric(10, 2)) as srednie_zarobki,
@@ -31,10 +31,10 @@ where l.lokal_id = p.lokal_id
 group by l.lokal_id
 go
 go
--- 2 --
+-- 2 -- sprawdza czy jakiś pracownik ma dziś urodziny
 
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id)
-values (N'Weles', N'Singh', '99010910460', '718107311', '2020/1/26 12:00:00', 3, 12, 7);
+values (N'Weles', N'Singh', '99011010460', '718107311', '2020/1/26 12:00:00', 3, 12, 7);
 
 select p.imie                                                        as imie,
        p.nazwisko                                                    as nazwisko,
@@ -50,21 +50,500 @@ where p.stanowisko_id = 3
    or p.stanowisko_id = 4
    or p.stanowisko_id = 5
 
--- 3 --
+-- 3 -- wypisuje dochody z każdego zamówienia przed i po opodatkowaniu
 
 -- wypisuje dochód dla wykonanych zamówień
 with dane as (select (p1.cena * zp1.liczba_posilkow) as dochód,
-                     zm1.zamowienie_id
+                     zm1.zamowienie_id,
+                     p1.nazwa
               from posilek p1,
                    zamowienie_posilek zp1,
                    zamowienie zm1
               where zm1.zamowienie_id = zp1.zamowienie_id
                 and zp1.posilek_id = p1.posilek_id)
 
-select d.zamowienie_id as zamówienie,
-       cast(sum(d.dochód) as numeric(10, 2)) as 'dochód przed opodatkowaniem',
-       cast(sum(d.dochód)*0.73 as numeric(10, 2)) as 'dochód po opodatkowaniu'
-from dane d, zamowienie zm
-where d.zamowienie_id = zm.zamowienie_id and
-      zm.status_zamowienia = 'Wykonane'
+select d.zamowienie_id                              as zamówienie,
+       cast(sum(d.dochód) as numeric(10, 2))        as 'dochód przed opodatkowaniem',
+       cast(sum(d.dochód) * 0.73 as numeric(10, 2)) as 'dochód po opodatkowaniu'
+from dane d,
+     zamowienie zm
+where d.zamowienie_id = zm.zamowienie_id
+  and zm.status_zamowienia = 'Wykonane'
 group by d.zamowienie_id
+go
+
+
+-- 4 --
+
+select distinct k.imie         as imie,
+                k.nazwisko     as nazwisko,
+                m.nazwa_miasta as miasto
+from klient k,
+     zamowienie zm
+         join zamowienie z on k.klient_id = z.klient_id
+         join lokal l on z.lokal_id = l.lokal_id
+         join miasto m on l.miasto_id = m.miasto_id
+go
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 5 -- ile dań przygotowują pracownicy w zależności od stanowiska
+--39 pomocnik, 93 kucharz 57 szef
+with zamowienia as (select p.pracownik_id, z.zamowienie_id, z.status_zamowienia, p.stanowisko_id
+                    from zamowienie z,
+                         pracownik p
+                    where z.pracownik_id = p.pracownik_id)
+
+select count(z.pracownik_id) as dania_kucharzy,
+       s.nazwa_stanowiska    as stanowisko
+from zamowienia z
+         join stanowisko s on z.stanowisko_id = s.stanowisko_id
+where s.nazwa_stanowiska = 'kucharz'
+group by s.nazwa_stanowiska
+union
+select count(z.pracownik_id) as dania_kucharzy,
+       s.nazwa_stanowiska    as stanowisko
+from zamowienia z
+         join stanowisko s on z.stanowisko_id = s.stanowisko_id
+where s.nazwa_stanowiska = 'szef kuchni'
+group by s.nazwa_stanowiska
+union
+select count(z.pracownik_id) as dania_kucharzy,
+       s.nazwa_stanowiska    as stanowisko
+from zamowienia z
+         join stanowisko s on z.stanowisko_id = s.stanowisko_id
+where s.nazwa_stanowiska = 'pomocnik kucharza'
+group by s.nazwa_stanowiska

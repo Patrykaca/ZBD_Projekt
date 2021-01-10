@@ -24,7 +24,7 @@ insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Kraków', 12);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Łódź', 9);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Wrocław', 7);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Poznań', 8);
-insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Gdańsk', 1);
+insert into miasto (nazwa_miasta, wojewodztwo_id) values (N'Gdańsk', 8);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values ('Szczecin', 5);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values ('Bydgoszcz', 10);
 insert into miasto (nazwa_miasta, wojewodztwo_id) values ('Lublin', 3);
