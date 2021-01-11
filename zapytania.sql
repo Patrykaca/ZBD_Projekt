@@ -1,4 +1,5 @@
 use projekt
+go
 
 -- 1 -- wypisuje średnie zarboki pracownikow lokalu oraz czy zarabiają więcej niż średnia dla wsztstkich lokali
 
@@ -30,7 +31,7 @@ where l.lokal_id = p.lokal_id
   and p.stanowisko_id = s.stanowisko_id
 group by l.lokal_id
 go
-go
+
 -- 2 -- sprawdza czy jakiś pracownik ma dziś urodziny
 
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id)
@@ -42,13 +43,7 @@ select p.imie                                                        as imie,
 from pracownik p
 where substring(p.pesel, 3, 2) like '%' + cast(format(getdate(), 'MM') as varchar(2)) + '%'
   and substring(p.pesel, 5, 2) like '%' + cast(format(getdate(), 'dd') as varchar(2)) + '%'
--- 2 --
-
-select p.pracownik_id, p.stanowisko_id, p.lokal_id
-from pracownik p
-where p.stanowisko_id = 3
-   or p.stanowisko_id = 4
-   or p.stanowisko_id = 5
+go
 
 -- 3 -- wypisuje dochody z każdego zamówienia przed i po opodatkowaniu
 
@@ -85,9 +80,8 @@ from klient k
 go
 
 
-
 -- 5 -- ile dań przygotowują pracownicy w zależności od stanowiska
---39 pomocnik, 93 kucharz 57 szef
+
 with zamowienia as (select p.pracownik_id, z.zamowienie_id, z.status_zamowienia, p.stanowisko_id
                     from zamowienie z,
                          pracownik p
@@ -135,4 +129,66 @@ select count(d.zamowienie_id) as ile_razy,
 from dane d
          join miasto m on d.miasto_id = m.miasto_id
 group by d.miasto_id, nazwa_miasta
+
+-- 7 -- ile jest osób zatrudnionych w I kwartale, które zarabiaja powyżej 3000
+
+select count(*) as ile_osób
+from pracownik p
+         join stanowisko s on p.stanowisko_id = s.stanowisko_id
+where datepart(mm, p.data_zatrudnienia) in (1, 2, 3)
+  and (isnull(p.premia, 0) + s.placa) > 3500
+go
+
+-- 8 -- średnie zarobki kobie i średnie zarobki mężczyzn
+
+select (select avg(isnull(p1.premia, 0) + s1.placa)
+        from pracownik p1
+                 join stanowisko s1 on p1.stanowisko_id = s1.stanowisko_id
+        where p1.imie like '%a')            as srednia_kobiet,
+
+       (select avg(isnull(p2.premia, 0) + s2.placa)
+        from pracownik p2
+                 join stanowisko s2 on p2.stanowisko_id = s2.stanowisko_id
+        where p2.imie not like '%a')        as srednia_meżczyzn,
+       avg((isnull(p.premia, 0) + s.placa)) as srednia_łączna
+from pracownik p
+         join stanowisko s on p.stanowisko_id = s.stanowisko_id
+go
+
+-- 9 -- ile razy zamawiany był najdroższy posiłek w warszawie
+
+select sum(zp.liczba_posilkow)
+from zamowienie_posilek zp
+         join zamowienie z on z.zamowienie_id = zp.zamowienie_id
+         join posilek p on p.posilek_id = zp.posilek_id
+where p.cena = (select max(cena)
+                from posilek)
+  and z.lokal_id in (select lokal_id
+                     from lokal,
+                          miasto
+                     where lokal.lokal_id = miasto.miasto_id
+                       and miasto.nazwa_miasta = 'Warszawa')
+
+-- 10 -- łączne podstawowe pensje pracowników lokali w których pracuje więcej niż 14 osób
+
+select sum(s.placa), l.lokal_id
+from pracownik p
+         join stanowisko s on p.stanowisko_id = s.stanowisko_id,
+     lokal l
+where p.lokal_id = l.lokal_id
+  and l.lokal_id in (select l.lokal_id
+                     from lokal l
+                              join pracownik p on l.lokal_id = p.lokal_id
+                     group by l.lokal_id
+                     having (count(l.lokal_id)) > 14)
+group by l.lokal_id
+go
+
+-- 11 --
+
+
+
+
+
+
 
