@@ -1,7 +1,7 @@
 use projekt
 go
 
--- 1 -- wypisuje średnie zarboki pracownikow lokalu oraz czy zarabiają więcej niż średnia dla wsztstkich lokali
+-- 1 -- wypisuje średnie zarboki pracownikow lokalu oraz czy zarabiają więcej niż średnia dla wszystkich lokali
 
 select l.lokal_id                                                           as lokal,
        cast(round(avg(s.placa + isnull(p.premia, 0)), 2) as numeric(10, 2)) as srednie_zarobki,
@@ -20,9 +20,7 @@ select l.lokal_id                                                           as l
                       stanowisko s1
                  where l1.lokal_id = p1.lokal_id
                    and p1.stanowisko_id = s1.stanowisko_id) then N'Mniej niż średnia'
-
            else 'Tyle samo' end                                             as srednie_zarobki
-
 
 from lokal l,
      pracownik p,
@@ -47,7 +45,6 @@ go
 
 -- 3 -- wypisuje dochody z każdego zamówienia przed i po opodatkowaniu
 
--- wypisuje dochód dla wykonanych zamówień
 with dane as (select (p1.cena * zp1.liczba_posilkow) as dochód,
                      zm1.zamowienie_id,
                      p1.nazwa
@@ -67,7 +64,6 @@ where d.zamowienie_id = zm.zamowienie_id
 group by d.zamowienie_id
 go
 
-
 -- 4 -- dane klientów i w jakim mieście dokonali zamówienia
 
 select distinct k.imie         as imie,
@@ -78,7 +74,6 @@ from klient k
          join lokal l on z.lokal_id = l.lokal_id
          join miasto m on l.miasto_id = m.miasto_id
 go
-
 
 -- 5 -- ile dań przygotowują pracownicy w zależności od stanowiska
 
@@ -139,18 +134,23 @@ where datepart(mm, p.data_zatrudnienia) in (1, 2, 3)
   and (isnull(p.premia, 0) + s.placa) > 3500
 go
 
--- 8 -- średnie zarobki kobie i średnie zarobki mężczyzn
+-- 8 -- jaki procent średnich zarobków zarabiają kobieta a jaki mężczyźni i ile wynoszą średnie zarobki
 
-select (select avg(isnull(p1.premia, 0) + s1.placa)
-        from pracownik p1
-                 join stanowisko s1 on p1.stanowisko_id = s1.stanowisko_id
-        where p1.imie like '%a')            as srednia_kobiet,
+declare @srednie float
+set @srednie = (select avg((isnull(p.premia, 0) + s.placa))
+                from pracownik p
+                         join stanowisko s on p.stanowisko_id = s.stanowisko_id)
 
-       (select avg(isnull(p2.premia, 0) + s2.placa)
-        from pracownik p2
-                 join stanowisko s2 on p2.stanowisko_id = s2.stanowisko_id
-        where p2.imie not like '%a')        as srednia_meżczyzn,
-       avg((isnull(p.premia, 0) + s.placa)) as srednia_łączna
+select distinct round(@srednie * 100 / (select avg(isnull(p1.premia, 0) + s1.placa)
+                                        from pracownik p1
+                                                 join stanowisko s1 on p1.stanowisko_id = s1.stanowisko_id
+                                        where p1.imie like '%a'), 2)     as '%_kobiet',
+
+                round(@srednie * 100 / (select avg(isnull(p2.premia, 0) + s2.placa)
+                                        from pracownik p2
+                                                 join stanowisko s2 on p2.stanowisko_id = s2.stanowisko_id
+                                        where p2.imie not like '%a'), 2) as '%_mężczyzn',
+                @srednie                                                 as srednia_łączna
 from pracownik p
          join stanowisko s on p.stanowisko_id = s.stanowisko_id
 go
@@ -171,7 +171,8 @@ where p.cena = (select max(cena)
 
 -- 10 -- łączne podstawowe pensje pracowników lokali w których pracuje więcej niż 14 osób
 
-select sum(s.placa), l.lokal_id
+select convert(int, sum(s.placa)) as suma_plac,
+       l.lokal_id                 as id_lokalu
 from pracownik p
          join stanowisko s on p.stanowisko_id = s.stanowisko_id,
      lokal l
@@ -182,13 +183,21 @@ where p.lokal_id = l.lokal_id
                      group by l.lokal_id
                      having (count(l.lokal_id)) > 14)
 group by l.lokal_id
+order by suma_plac
 go
 
--- 11 --
+-- 11 -- nazwy najczęściej zamawianych posiłków w weekendy
 
+with dane as (select count(*) as ilość_zamówień, zp.posilek_id
+              from zamowienie z
+                       join zamowienie_posilek zp on z.zamowienie_id = zp.zamowienie_id
+              where datepart(DW, z.data) between 6 and 7
+              group by zp.posilek_id)
 
-
-
-
-
+select top 5 with ties p.nazwa
+from dane d,
+     posilek p
+where d.posilek_id = p.posilek_id
+order by d.ilość_zamówień desc
+go
 
