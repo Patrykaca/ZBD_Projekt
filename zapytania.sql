@@ -263,7 +263,7 @@ begin
 end
 go
 
--- 15 -- usuń miasta w których nie ma żadnej resturacji
+-- 15 -- wypisz ilu jest pracowników poszczególnych działów w zależności od lokalu
 
 begin
     declare @lokal int, @dzial int
@@ -275,7 +275,6 @@ begin
     while
         @@fetch_status = 0
         begin
-
             declare @ilosc int
             set @ilosc = (select count(p.dzial_id)
                           from pracownik p
@@ -283,15 +282,11 @@ begin
                             and p.dzial_id = @dzial
                           group by p.dzial_id
             )
-            if @ilosc is not null
-                begin
 
-                    print 'dzial ' + cast(@dzial as varchar(16))
-                        + ' lokal ' +
-                          cast(@lokal as varchar(16))
-                        + N' ilość pracowników ' + cast(@ilosc as varchar(16))
-
-                end
+            print 'dzial ' + cast(@dzial as varchar(16))
+                + ' lokal ' +
+                  cast(@lokal as varchar(16))
+                + N' ilość pracowników ' + cast(isnull(@ilosc, 0) as varchar(16))
 
             fetch next from kursor into @dzial, @lokal
         end
