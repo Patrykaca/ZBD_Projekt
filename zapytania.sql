@@ -169,7 +169,7 @@ where p.cena = (select max(cena)
                      where lokal.lokal_id = miasto.miasto_id
                        and miasto.nazwa_miasta = 'Warszawa')
 
--- 10 -- łączne podstawowe pensje pracowników lokali w których pracuje więcej niż 14 osób
+-- 10 -- łączne podstawowe pensje pracowników, pomijając managerów lokali w których pracuje więcej niż 14
 
 select convert(int, sum(s.placa)) as suma_plac,
        l.lokal_id                 as id_lokalu
@@ -177,6 +177,9 @@ from pracownik p
          join stanowisko s on p.stanowisko_id = s.stanowisko_id,
      lokal l
 where p.lokal_id = l.lokal_id
+  and p.stanowisko_id != (select st.stanowisko_id
+                          from stanowisko st
+                          where st.nazwa_stanowiska = 'manager')
   and l.lokal_id in (select l.lokal_id
                      from lokal l
                               join pracownik p on l.lokal_id = p.lokal_id
@@ -186,7 +189,7 @@ group by l.lokal_id
 order by suma_plac
 go
 
--- 11 -- nazwy najczęściej zamawianych posiłków w weekendy
+-- 11 -- nazwy 5 najczęściej zamawianych posiłków w weekendy
 
 with dane as (select count(*) as ilość_zamówień, zp.posilek_id
               from zamowienie z
@@ -199,5 +202,118 @@ from dane d,
      posilek p
 where d.posilek_id = p.posilek_id
 order by d.ilość_zamówień desc
+
+-- 12 -- sprawdz czy istnieja klienci ktorzy w zamówieniu podali taki tą samą ulicę na której znajduje się lokal
+
+insert into zamowienie (data, adres, lokal_id, klient_id, pracownik_id, status_zamowienia)
+values ('2021/01/01 12:00:00', N'ul. Jana Pawła II', 1, 2, 106, 'Wykonane')
+
+
+select iif(exists(select *
+                  from zamowienie z,
+                       lokal l
+                  where z.lokal_id = l.lokal_id
+                    and z.adres like '%' + l.ulica + '%'), N'istnieją tacy klienci', N'nie istnieją tacy klienci')
 go
+
+-- 13 -- wypisz dane pomocników kucharzy, oraz informację czy mogę się strać o awans, którego warunkiem jest dwuletni staż pracy
+
+select p.imie     as imie,
+       p.nazwisko as nazwisko,
+       case
+           when datediff(mm, data_zatrudnienia, getdate()) >= 24
+               then N'tak'
+           when datediff(mm, data_zatrudnienia, getdate()) < 24
+               then N'nie'
+           end    as czy_awansować
+
+from pracownik p
+         join stanowisko s on s.stanowisko_id = p.stanowisko_id
+where s.nazwa_stanowiska = 'pomocnik kucharza'
+go
+
+-- 14 -- wypisz procentowy udział zamówień dla poszczególnych miast
+
+begin
+    declare @miasto int, @srednia float
+    set @srednia = (select count(*) from zamowienie)
+    declare kursor cursor for (select miasto_id from miasto m)
+    open kursor
+    fetch next from kursor into @miasto
+    while
+        @@fetch_status = 0
+        begin
+            declare @miasto_sr float, @nazwa varchar(16)
+            set @miasto_sr = (select count(*)
+                              from zamowienie z
+                                       join lokal l on l.lokal_id = z.lokal_id
+                              where l.miasto_id = @miasto)
+            set @nazwa = (select m.nazwa_miasta
+                          from miasto m
+                          where m.miasto_id = @miasto)
+
+            print @nazwa + ' ' +
+                  cast(cast((@miasto_sr / @srednia * 100) as numeric(4, 2)) as varchar(5))
+                + '% '
+
+            fetch next from kursor into @miasto
+        end
+    close kursor
+    deallocate kursor
+end
+go
+
+-- 15 -- usuń miasta w których nie ma żadnej resturacji
+
+begin
+    declare @lokal int, @dzial int
+    declare kursor cursor for (select dzial_id, lokal_id
+                               from lokal,
+                                    dzial)
+    open kursor
+    fetch next from kursor into @dzial, @lokal
+    while
+        @@fetch_status = 0
+        begin
+
+            declare @ilosc int
+            set @ilosc = (select count(p.dzial_id)
+                          from pracownik p
+                          where p.lokal_id = @lokal
+                            and p.dzial_id = @dzial
+                          group by p.dzial_id
+            )
+            if @ilosc is not null
+                begin
+
+                    print 'dzial ' + cast(@dzial as varchar(16))
+                        + ' lokal ' +
+                          cast(@lokal as varchar(16))
+                        + N' ilość pracowników ' + cast(@ilosc as varchar(16))
+
+                end
+
+            fetch next from kursor into @dzial, @lokal
+        end
+    close kursor
+    deallocate kursor
+end
+go
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

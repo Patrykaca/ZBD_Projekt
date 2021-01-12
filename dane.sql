@@ -98,6 +98,8 @@ insert into lokal (ulica, kod_pocztowy, miasto_id) values (N'ul. Dobra', '12-346
 insert into lokal (ulica, kod_pocztowy, miasto_id) values (N'ul. Ceglana', '75-351', 7);
 insert into lokal (ulica, kod_pocztowy, miasto_id) values (N'ul. Bobrowa', '24-642', 4);
 insert into lokal (ulica, kod_pocztowy, miasto_id) values (N'ul. Agrestowa', '84-829', 1);
+insert into lokal (ulica, kod_pocztowy, miasto_id) values (N'ul. Zułta ', '69-666', 2);
+
 go
 
 --kelner
