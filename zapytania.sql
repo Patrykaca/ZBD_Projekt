@@ -33,7 +33,7 @@ go
 -- 2 -- sprawdza czy jakiś pracownik ma dziś urodziny
 
 insert into pracownik (imie, nazwisko, pesel, telefon, data_zatrudnienia, stanowisko_id, lokal_id, dzial_id)
-values (N'Weles', N'Singh', '99011010460', '718107311', '2020/1/26 12:00:00', 3, 12, 7);
+values (N'Weles', N'Singh', '99011410460', '718107311', '2020/1/26 12:00:00', 3, 12, 7);
 
 select p.imie                                                        as imie,
        p.nazwisko                                                    as nazwisko,
@@ -120,18 +120,22 @@ with dane as (select l.miasto_id,
 
 select count(d.zamowienie_id) as ile_razy,
        d.miasto_id            as miasto,
-       m.nazwa_miasta
+       m.nazwa_miasta,
+       d.posilek_id
 from dane d
          join miasto m on d.miasto_id = m.miasto_id
-group by d.miasto_id, nazwa_miasta
+group by d.miasto_id, nazwa_miasta, d.posilek_id
 
--- 7 -- ile jest osób zatrudnionych w I kwartale, które zarabiaja powyżej 3000
+-- 7 -- ile osób zostało zatrudnionych w poszczególnych kwartalach danego roku
+--
 
-select count(*) as ile_osób
+select count(*)                          as ile_osób,
+       datepart(yy, p.data_zatrudnienia) as rok,
+       datepart(qq, p.data_zatrudnienia) as kwartał
 from pracownik p
          join stanowisko s on p.stanowisko_id = s.stanowisko_id
-where datepart(mm, p.data_zatrudnienia) in (1, 2, 3)
-  and (isnull(p.premia, 0) + s.placa) > 3500
+group by datepart(yy, p.data_zatrudnienia),
+         datepart(qq, p.data_zatrudnienia)
 go
 
 -- 8 -- jaki procent średnich zarobków zarabiają kobieta a jaki mężczyźni i ile wynoszą średnie zarobki
@@ -155,21 +159,24 @@ from pracownik p
          join stanowisko s on p.stanowisko_id = s.stanowisko_id
 go
 
--- 9 -- ile razy zamawiany był najdroższy posiłek w warszawie
+-- 9 -- ile razy zamawiany był najdroższy posiłek w każdym mieście
 
-select sum(zp.liczba_posilkow)
+select sum(zp.liczba_posilkow) as ilość_zamówień_najdroższego_posiłku,
+       m.nazwa_miasta as nazwa_miasta
 from zamowienie_posilek zp
          join zamowienie z on z.zamowienie_id = zp.zamowienie_id
-         join posilek p on p.posilek_id = zp.posilek_id
+         join posilek p on p.posilek_id = zp.posilek_id,
+     lokal l
+         left join miasto m on l.miasto_id = m.miasto_id
 where p.cena = (select max(cena)
                 from posilek)
-  and z.lokal_id in (select lokal_id
-                     from lokal,
-                          miasto
-                     where lokal.lokal_id = miasto.miasto_id
-                       and miasto.nazwa_miasta = 'Warszawa')
+  and z.lokal_id = l.lokal_id
+group by m.nazwa_miasta
+order by ilość_zamówień_najdroższego_posiłku asc
 
--- 10 -- łączne podstawowe pensje pracowników, pomijając managerów lokali w których pracuje więcej niż 14
+
+
+-- 10 -- łączne podstawowe pensje pracowników, pomijając managerów lokali w których pracuje więcej niż 9
 
 select convert(int, sum(s.placa)) as suma_plac,
        l.lokal_id                 as id_lokalu
@@ -184,8 +191,8 @@ where p.lokal_id = l.lokal_id
                      from lokal l
                               join pracownik p on l.lokal_id = p.lokal_id
                      group by l.lokal_id
-                     having (count(l.lokal_id)) > 14)
-group by l.lokal_id
+                     having (count(l.lokal_id)) > 9)
+group by rollup (l.lokal_id)
 order by suma_plac
 go
 
@@ -212,11 +219,12 @@ values ('2021/01/01 12:00:00', N'ul. Jana Pawła II', 1, 2, 106, 'Wykonane')
 select iif(exists(select *
                   from zamowienie z,
                        lokal l
-                  where z.lokal_id = l.lokal_id
+                  where z.
+                            lokal_id = l.lokal_id
                     and z.adres like '%' + l.ulica + '%'), N'istnieją tacy klienci', N'nie istnieją tacy klienci')
 go
 
--- 13 -- wypisz dane pomocników kucharzy, oraz informację czy mogę się strać o awans, którego warunkiem jest dwuletni staż pracy
+-- 13 -- wypisz dane pomocników kucharzy, oraz informację czy mogę się starać o awans, którego warunkiem jest dwuletni staż pracy
 
 select p.imie     as imie,
        p.nazwisko as nazwisko,
