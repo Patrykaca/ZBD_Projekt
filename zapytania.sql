@@ -302,21 +302,3 @@ begin
     deallocate kursor
 end
 go
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

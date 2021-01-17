@@ -37,7 +37,8 @@ exec obliczKosztZamowienia 130
 go
 
 
--- dodaj procentową premię pracownikom w zależności od stanowiska i daty jeżeli pracuje ponad 2 lata data jako arg
+-- dodaj procentową premię pracownikom w zależności od stanowiska i daty jeżeli
+-- data w miesiącach
 
 
 if exists(select 1
@@ -123,3 +124,73 @@ go
 select dbo.poprawnoscPesel('99030810471')
 go
 
+--procedura wypisująca dla każdego lokalu ilość zamówień względem statusu dla każdego wywołania z podanego dnia
+--domyślnie z dnia dzisiejszego
+
+if exists(select 1
+          from sys.objects
+          where TYPE = 'P'
+            and NAME = 'statusZamowien')
+    drop procedure statusZamowien
+go
+
+create procedure statusZamowien(@dzien datetime)
+as
+begin
+
+    if @dzien is null
+        begin
+            set @dzien = datepart(dd, getdate())
+        end
+    else
+
+        begin
+
+            declare kursor cursor for (select lokal_id from lokal)
+            declare @lokal int
+            open kursor
+            fetch next from kursor into @lokal
+            while
+                @@fetch_status = 0
+                begin
+                    declare @anulowane int, @wykonane int, @w_toku int, @oczekujace int
+                    set @anulowane = (select count(*)
+                                      from zamowienie z
+                                      where z.lokal_id = @lokal
+                                        and datediff(dd, getdate(), @dzien) = 0
+                                        and z.status_zamowienia = 'Anulowane')
+
+                    set @wykonane = (select count(*)
+                                     from zamowienie z
+                                     where z.lokal_id = @lokal
+                                       and datediff(dd, getdate(), @dzien) = 0
+                                       and z.status_zamowienia = 'Wykonane')
+
+                    set @w_toku = (select count(*)
+                                   from zamowienie z
+                                   where z.lokal_id = @lokal
+                                     and datediff(dd, getdate(), @dzien) = 0
+                                     and z.status_zamowienia = 'W toku')
+
+                    set @oczekujace = (select count(*)
+                                       from zamowienie z
+                                       where z.lokal_id = @lokal
+                                         and datediff(dd, getdate(), @dzien) = 0
+                                         and z.status_zamowienia = N'Oczekujące')
+
+                    print 'Lokal ' + cast(@lokal as varchar(2))
+                        + ' anulowane: ' + cast(@anulowane as varchar(5))
+                        + ' wykonane: ' + cast(@wykonane as varchar(5))
+                        + ' w toku: ' + cast(@w_toku as varchar(5))
+                        + N' oczekujące: ' + cast(@oczekujace as varchar(5))
+
+                    fetch next from kursor into @lokal
+                end
+            close kursor
+            deallocate kursor
+        end
+end
+go
+
+exec statusZamowien '2021/01/17'
+go
