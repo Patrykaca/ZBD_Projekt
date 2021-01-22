@@ -218,4 +218,3 @@ go
 update pracownik set premia = datediff(mm, pracownik.data_zatrudnienia, getdate()) * 10
 where datediff(dd, pracownik.data_zatrudnienia, getdate()) > 1200
 go
-
